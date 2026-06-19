@@ -1,0 +1,6 @@
+{
+  "name": "Free Films",
+  "description": "Stream anime, movies, and series in 4K with multiple languages, profiles, and personalized lists. Set in modern black and orange theme.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
