@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Films - Plataforma de Vídeo Premium 4K</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #08090b;
+            --surface-color: #111318;
+            --surface-light: #181c24;
+            --primary-color: #ff5722;
+            --primary-gradient: linear-gradient(135deg, #ff5722 0%, #ff8a65 100%);
+            --text-color: #ffffff;
+            --text-secondary: #9eafc2;
+            --accent-green: #4caf50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Glow Backgrounds */
+        .ambient-glow-1 {
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 87, 34, 0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .ambient-glow-2 {
+            position: absolute;
+            top: 60%;
+            left: -15%;
+            width: 60vw;
+            height: 60vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 87, 34, 0.05) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 6%;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background-color: rgba(8, 9, 11, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background: var(--primary-gradient);
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #000000;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4);
+        }
+
+        .logo-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-highlight {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s;
+            opacity: 0.8;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            opacity: 1;
+        }
+
+        .btn-live-database {
+            background-color: var(--surface-light);
+            color: var(--text-color);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-live-database:hover {
+            background-color: var(--primary-color);
+            color: #000;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 6% 120px 6%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 650px;
+            padding-right: 40px;
+        }
+
+        .hero-badge {
+            background: rgba(255, 87, 34, 0.1);
+            color: var(--primary-color);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 87, 34, 0.2);
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 58px;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .hero-cta-container {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: #000000;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 87, 34, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--surface-color);
+            color: var(--text-color);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--surface-light);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Mockup Mobile device screen */
+        .device-mockup {
+            width: 310px;
+            height: 640px;
+            background: #000;
+            border-radius: 40px;
+            border: 12px solid #1a202c;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 50px rgba(255, 87, 34, 0.15);
+            position: relative;
+            overflow: hidden;
+            background-image: linear-gradient(180deg, #0f1014 0%, #06070a 100%);
+        }
+
+        .device-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 25px;
+            background: #1a202c;
+            border-bottom-left-radius: 18px;
+            border-bottom-right-radius: 18px;
+            z-index: 10;
+        }
+
+        .device-content {
+            height: 100%;
+            padding: 40px 16px 20px 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .mock-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .mock-nav-actions {
+            display: flex;
+            gap: 12px;
+            font-size: 13px;
+        }
+
+        .mock-card {
+            background: #12151c;
+            border-radius: 14px;
+            padding: 16px;
+            margin-top: 15px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .mock-thumbnail {
+            width: 100%;
+            height: 260px;
+            border-radius: 12px;
+            background: #1d212a;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 12px;
+        }
+
+        .mock-thumb-badge {
+            background-color: var(--primary-color);
+            color: #000;
+            font-size: 8px;
+            font-weight: 800;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        .mock-controls {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(18, 21, 28, 0.9);
+            padding: 14px;
+            border-radius: 15px;
+            margin-top: auto;
+        }
+
+        .mock-control-item {
+            color: var(--text-secondary);
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .mock-control-item.active {
+            color: var(--primary-color);
+        }
+
+        .mock-control-item span {
+            font-size: 8px;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--surface-color);
+            padding: 80px 6%;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-subtitle {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: var(--surface-light);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 16px;
+            padding: 40px 30px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 87, 34, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 24px;
+        }
+
+        .feature-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        /* Integration Steps / Sync Tutorial */
+        .integration {
+            padding: 100px 6%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .instructions-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .step-number {
+            background: var(--primary-gradient);
+            color: #000;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(255, 87, 34, 0.3);
+        }
+
+        .step-body h4 {
+            font-size: 18px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .step-body p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .live-link-box {
+            background-color: var(--surface-color);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .live-link-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .live-link-pulse {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-green);
+            animation: pulse-ring 2s infinite;
+        }
+
+        .url-copier {
+            display: flex;
+            background-color: var(--surface-light);
+            border-radius: 8px;
+            padding: 6px;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 20px;
+        }
+
+        .url-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            padding: 10px;
+            font-family: monospace;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .btn-copy {
+            background: var(--primary-gradient);
+            color: #000;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn-copy:hover {
+            opacity: 0.9;
+        }
+
+        /* Movie Grid Catalog live preview */
+        .catalog-preview {
+            background-color: var(--surface-color);
+            padding: 100px 6% 80px 6%;
+            position: relative;
+        }
+
+        .catalog-filter {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--surface-light);
+            color: var(--text-color);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: rgba(255, 87, 34, 0.4);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-gradient);
+            color: #000;
+            border-color: transparent;
+            font-weight: 600;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .movie-card {
+            background-color: var(--surface-light);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .movie-card:hover {
+            transform: scale(1.03);
+            border-color: rgba(255, 87, 34, 0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .movie-poster-container {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .movie-badge-group {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .movie-badge {
+            background-color: rgba(0,0,0,0.75);
+            color: #fff;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.08);
+            width: fit-content;
+        }
+
+        .movie-badge.quality {
+            background-color: var(--primary-color);
+            color: #000;
+            font-weight: 800;
+            border: none;
+        }
+
+        .movie-info {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .movie-title {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .movie-meta {
+            font-size: 11px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .movie-desc {
+            font-size: 11px;
+            line-height: 1.4;
+            color: #72849a;
+            font-weight: 300;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 48px;
+        }
+
+        .movie-play-btn {
+            margin-top: auto;
+            background-color: rgba(255, 87, 34, 0.08);
+            color: var(--primary-color);
+            width: 100%;
+            border: 1px solid rgba(255, 87, 34, 0.2);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .movie-play-btn:hover {
+            background-color: var(--primary-color);
+            color: #000;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 50px 6% 30px 6%;
+            background-color: #050608;
+            font-size: 13px;
+        }
+
+        .footer-cols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px auto;
+        }
+
+        .footer-logo-desc {
+            max-width: 280px;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.5;
+            margin-top: 12px;
+        }
+
+        .footer-col h5 {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 300;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.03);
+            padding-top: 30px;
+            color: #556272;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: #556272;
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Animations */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column;
+                padding-top: 60px;
+                text-align: center;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+
+            .hero-cta-container {
+                justify-content: center;
+            }
+
+            .instructions-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 44px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header {
+                padding: 16px 4%;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero-title {
+                font-size: 34px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo-container">
+            <div class="logo-icon">
+                <i class="fa-solid fa-play"></i>
+            </div>
+            <div class="logo-title">Free<span class="logo-highlight">Films</span></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#features">Recursos</a></li>
+            <li><a href="#tutorial">Hospedar Banco</a></li>
+            <li><a href="#catalog">Catálogo Online</a></li>
+        </ul>
+        <a href="/catalog.json" target="_blank" class="btn-live-database">
+            <i class="fa-solid fa-database"></i> Ver JSON Servido
+        </a>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-bolt"></i> Suporte Completo à Transmissão 4K HDR
+            </div>
+            <h1 class="hero-title">A sua central dinâmica e premium de cinema no Android</h1>
+            <p class="hero-description">
+                O Free Films é um aplicativo de streaming gratuito projetado com belíssimos efeitos visuais Material Design 3 e um reprodutor moderno compatível com o ecossistema Netlify. No perfil de utilizador, você insere um servidor JSON dinâmico para trocar todo o conteúdo em tempo real!
+            </p>
+            <div class="hero-cta-container">
+                <a href="/catalog.json" target="_blank" class="btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Baixar a Base JSON
+                </a>
+                <a href="#tutorial" class="btn-secondary">
+                    <i class="fa-solid fa-arrow-down"></i> Tutorial de Integração
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="device-mockup">
+                <div class="device-notch"></div>
+                <div class="device-content">
+                    <div class="mock-navbar">
+                        <i class="fa-solid fa-arrow-left" style="font-size: 12px;"></i>
+                        <span style="font-size: 11px; font-weight: 600;">Reproduzindo...</span>
+                        <i class="fa-solid fa-share-nodes" style="font-size: 12px; color: var(--primary-color);"></i>
+                    </div>
+
+                    <div class="mock-thumbnail" style="background-image: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.9) 100%), url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&q=80')">
+                        <span class="mock-thumb-badge">4K HDR ULTRA HD</span>
+                    </div>
+
+                    <div class="mock-card">
+                        <div style="font-size:11px; font-weight:700; color: #fff; margin-bottom: 2px;">Duna: Parte Dois</div>
+                        <div style="font-size:8px; color: var(--text-secondary); line-height: 1.3">Aventura épica de ficção científica ambientada no deserto profundo de Arrakis.</div>
+                        <div style="display: flex; gap: 8px; margin-top: 8px;">
+                            <span style="font-size: 7px; background-color: var(--primary-color);color:#000; padding:2px 4px; border-radius:3px; font-weight:800;">PLAY</span>
+                            <span style="font-size: 7px; color: #fff; opacity:0.6; padding:2px 4px;">14+</span>
+                        </div>
+                    </div>
+
+                    <div class="mock-controls">
+                        <div class="mock-control-item active">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Início</span>
+                        </div>
+                        <div class="mock-control-item">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>Pesquisa</span>
+                        </div>
+                        <div class="mock-control-item">
+                            <i class="fa-solid fa-bookmark"></i>
+                            <span>Lista</span>
+                        </div>
+                        <div class="mock-control-item">
+                            <i class="fa-solid fa-user"></i>
+                            <span>Conta</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Highlights/Features -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <span class="section-subtitle">O Que Fazemos</span>
+            <h2 class="section-title">Streaming Inteligente no Celular</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-mobile-screen-button feature-icon"></i>
+                <h4 class="feature-name">Jetpack Compose UI</h4>
+                <p class="feature-desc">Visual totalmente nativo, construído inteiramente no ecossistema Android moderno com efeitos brilhantes transparentes, carregamento assíncrono e transições suaves.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-video feature-icon"></i>
+                <h4 class="feature-name">Sincronização Netlify</h4>
+                <p class="feature-desc">Com compatibilidade total a servidores de JSON estático. Ative transações cross-origin completas instantaneamente com o nosso arquivo de regras.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-compact-disc feature-icon"></i>
+                <h4 class="feature-name">Player de Alta Definição</h4>
+                <p class="feature-desc">Aceleração de hardware nativa para reproduzir transmissões estáveis de vídeos reais (MP4, HLS) integrados em cada detalhe de filme, série ou anime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Tutorial & Dynamic Link Output -->
+    <section class="integration" id="tutorial">
+        <div class="section-header">
+            <span class="section-subtitle">Controle em Suas Mãos</span>
+            <h2 class="section-title">Como Conectar seu Próprio JSON</h2>
+        </div>
+        <div class="instructions-container">
+            <div>
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-body">
+                        <h4>Hospede no Netlify</h4>
+                        <p>Importe este repositório para a sua conta no Netlify. Ela será construída automaticamente e disponibilizará o seu ficheiro <code style="color: var(--primary-color);">catalog.json</code> em poucos segundos.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-body">
+                        <h4>Edite os Filmes</h4>
+                        <p>Altere o conteúdo do arquivo <code style="color: var(--primary-color);">catalog.json</code> com as capas, títulos e links de vídeo dos seus próprios filmes, animes ou séries favoritos.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-body">
+                        <h4>Insira a URL no Aplicativo</h4>
+                        <p>Entre no menu de perfis ou definições do aplicativo Android, introduza a URL compartilhada do seu Netlify e assista o catálogo mudar em tempo real!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="live-link-box">
+                <span class="live-link-title">
+                    <span class="live-link-pulse"></span>
+                    Sua URL Atual de Catálogo
+                </span>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px;">
+                    Este site Netlify serve seu catálogo com os cabeçalhos CORS corretos. Use este link no campo "URL da Base de Dados" dentro do app Android:
+                </p>
+                <div class="url-copier">
+                    <input type="text" class="url-input" id="catalog-url-field" readonly>
+                    <button class="btn-copy" onclick="copyCatalogUrl()">Copiar Link</button>
+                </div>
+                <div style="background-color: rgba(255, 87, 34, 0.05); border: 1px dashed rgba(255, 87, 34, 0.2); padding: 15px; border-radius: 8px;">
+                    <span style="font-size: 11px; text-transform: uppercase; font-weight:700; color: var(--primary-color);">Dica Importante</span>
+                    <p style="font-size: 11px; color:#a2adc2; margin-top: 4px; line-height: 1.4;">Ao alterar o repositório, o Netlify recompila tudo em tempo de execução de forma contínua, permitindo gerenciar filmes remotamente sem precisar atualizar o APK!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE CATALOG PREVIEW -->
+    <section class="catalog-preview" id="catalog">
+        <div class="section-header">
+            <span class="section-subtitle font-code">Live Preview</span>
+            <h2 class="section-title">Conteúdo Disponível Atualmente</h2>
+        </div>
+
+        <div class="catalog-filter">
+            <button class="filter-btn active" onclick="filterCatalog('ALL')">Todos</button>
+            <button class="filter-btn" onclick="filterCatalog('MOVIE')">Filmes</button>
+            <button class="filter-btn" onclick="filterCatalog('SERIES')">Séries</button>
+            <button class="filter-btn" onclick="filterCatalog('ANIME')">Animes</button>
+        </div>
+
+        <div class="catalog-grid" id="catalog-grid-div">
+            <!-- Dynamically populated via fetch -->
+            <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-secondary)">
+                <i class="fa-solid fa-spinner fa-spin" style="font-size: 24px; color: var(--primary-color)"></i>
+                <p style="margin-top: 10px;">Carregando catálogo do servidor local...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Page -->
+    <footer>
+        <div class="footer-cols">
+            <div class="footer-col" style="grid-column: span 1.5">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <div class="logo-title">Free<span class="logo-highlight">Films</span></div>
+                </div>
+                <p class="footer-logo-desc">Plataforma avançada, elegante e independente para reprodução de cinema ultra HD direto no ecossistema Android.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Endpoints</h5>
+                <ul class="footer-links">
+                    <li><a href="/catalog.json" target="_blank">Catálogo Principal (JSON)</a></li>
+                    <li><a href="/netlify.toml" target="_blank">Políticas de Redirecionamento</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Navegação</h5>
+                <ul class="footer-links">
+                    <li><a href="#features">Recursos</a></li>
+                    <li><a href="#tutorial">Manual do JSON</a></li>
+                    <li><a href="#catalog">Catálogo Online</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Free Films Project. Distribuído sob compatibilidade estática Netlify.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-android"></i></a>
+                <a href="#"><i class="fa-solid fa-earth-americas"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set live URL based on current origin
+        document.getElementById("catalog-url-field").value = window.location.origin + "/catalog.json";
+
+        function copyCatalogUrl() {
+            var copyText = document.getElementById("catalog-url-field");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+            
+            // Show toast feedback inside copy btn
+            var btn = document.querySelector(".btn-copy");
+            var originalText = btn.innerText;
+            btn.innerText = "Copiado!";
+            btn.style.background = "#4caf50";
+            setTimeout(function() {
+                btn.innerText = originalText;
+                btn.style.background = "";
+            }, 2000);
+        }
+
+        // Fetch catalog dynamically
+        let fullCatalog = [];
+        fetch('./catalog.json')
+            .then(response => response.json())
+            .then(data => {
+                fullCatalog = data;
+                renderCatalog(data);
+            })
+            .catch(err => {
+                console.error("Error loading index catalog JSON", err);
+                document.getElementById("catalog-grid-div").innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #ff5722">
+                        <i class="fa-solid fa-triangle-exclamation" style="font-size: 32px"></i>
+                        <p style="margin-top: 10px;">Falha ao carregar o catálogo local. Verifique se o arquivo "catalog.json" está no diretório correto.</p>
+                    </div>`;
+            });
+
+        // Render catalog function
+        function renderCatalog(items) {
+            const grid = document.getElementById("catalog-grid-div");
+            if (items.length === 0) {
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); padding: 40px;">Nenhum item encontrado nesta categoria.</div>`;
+                return;
+            }
+
+            grid.innerHTML = items.map(item => {
+                const typeLabel = item.type === "ANIME" ? "Anime" : (item.type === "MOVIE" ? "Filme" : "Série");
+                
+                return `
+                    <div class="movie-card">
+                        <div class="movie-poster-container" style="background-image: linear-gradient(rgba(0,0,0,0) 65%, rgba(17,19,24,0.95) 100%), url('${item.imageUrl}')">
+                            <div class="movie-badge-group">
+                                <span class="movie-badge quality">${item.quality || '4K HDR'}</span>
+                                <span class="movie-badge">${typeLabel}</span>
+                            </div>
+                        </div>
+                        <div class="movie-info">
+                            <h5 style="color:#ffffff" class="movie-title" title="${item.title}">${item.title}</h5>
+                            <div class="movie-meta">
+                                <span>${item.releaseYear}</span>
+                                <span><i class="fa-solid fa-clock" style="margin-right: 3px;"></i>${item.duration}</span>
+                                <span style="border: 1px solid rgba(255,255,255,0.2); padding: 0px 4px; border-radius: 3px;">${item.rating}</span>
+                            </div>
+                            <p class="movie-desc">${item.description}</p>
+                            <a href="${item.videoUrl}" target="_blank" class="movie-play-btn">
+                                <i class="fa-solid fa-play"></i> Testar Transmissão Original
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Filter Catalog by Type
+        function filterCatalog(type) {
+            // Update active state class on buttons
+            const btns = document.querySelectorAll(".filter-btn");
+            btns.forEach(btn => btn.classList.remove("active"));
+            event.target.classList.add("active");
+
+            if (type === "ALL") {
+                renderCatalog(fullCatalog);
+            } else {
+                const filtered = fullCatalog.filter(item => item.type === type);
+                renderCatalog(filtered);
+            }
+        }
+    </script>
+</body>
+</html>
